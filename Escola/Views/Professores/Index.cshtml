@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Escola.Models.Professores>
+
+@{
+    ViewData["Title"] = "Professores";
+}
+
+<h1>Professores</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td >
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Listar Alunos", "ListarAlunos", "Professores", new { id = @item.Id, nome = item.Nome }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
